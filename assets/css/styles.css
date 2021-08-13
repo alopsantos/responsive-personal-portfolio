@@ -701,6 +701,7 @@ img {
 /*==================== PORTFOLIO ====================*/
 .portfolio__container {
     overflow: initial;
+    margin: 0;
 }
 
 .portfolio__content {
