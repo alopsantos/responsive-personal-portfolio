@@ -63,7 +63,6 @@ tabs.forEach(tab => {
     tab.forEach(tab => {
       tab.classList.remove('qualification__active')
     })
-
     tab.classList.add('qualification__active')
   })
 })
@@ -93,6 +92,7 @@ modalCloses.forEach((modalClose) => {
 /*==================== PORTFOLIO SWIPER  ====================*/
 var swiper = new Swiper('.portfolio__container', {
   cssMode: true,
+  loop: true,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
@@ -123,11 +123,35 @@ var swiperTestimonial = new Swiper('.testimonial__container', {
   }
 })
 
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+/*==================== SCROLL SECTIONS ACTIVE LINK ====================
+const navLink = document.querySelectorAll('.nav__link')
 
+function linkAction(){
+  const navMenu = document.getElementById('nav-menu')
+  navMenu.classList.remove('show-menu')
+}
+
+navLink.forEach(n => n.addEventListener('click', linkAction))
 
 /*==================== CHANGE BACKGROUND HEADER ====================*/ 
+const sections = document.querySelectorAll('section[id')
 
+function scrollActive(){
+  const scrollY = window.pageYOffset
+
+  sections.forEach(current => {
+    const sectionHeight = current.offsetHeight
+    const sectionTop = current.offsetTop - 50;
+    sectionId = current.getAttribute('id')
+
+    if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+      document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+    }else{
+      document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+    }
+  })
+}
+window.addEventListener('scroll', scrollActive)
 
 /*==================== SHOW SCROLL UP ====================*/ 
 
